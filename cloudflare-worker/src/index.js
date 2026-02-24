@@ -11,7 +11,15 @@ export default {
       const { pathname, searchParams } = url;
 
       // health
-      if (pathname === "/health") return json({ status: "ok" });
+      if (pathname === "/health") {
+        return json({
+          status: "ok",
+          provider: "groq",
+          has_groq_key: Boolean(env.GROQ_API_KEY),
+          groq_model: normalizeGroqModel(env.GROQ_MODEL),
+          require_api_key: (env.REQUIRE_API_KEY || "0") === "1",
+        });
+      }
 
       // preflight
       if (request.method === "OPTIONS") return new Response(null, { status: 204, headers: cors() });
@@ -246,6 +254,15 @@ async function handleMensagem(request, env) {
     }
 
     const prompt = buildPrompt(mensagem, snippets, env);
+    if (!env.GROQ_API_KEY || !String(env.GROQ_API_KEY).trim()) {
+      return json(
+        {
+          detail:
+            "GROQ_API_KEY ausente no Worker. Configure em Settings > Variables (secret) e redeploy.",
+        },
+        503
+      );
+    }
     const resposta = await chamarGroq(prompt, env);
 
     const agora = new Date().toISOString();
@@ -262,7 +279,9 @@ async function handleMensagem(request, env) {
     });
   } catch (err) {
     console.error("Erro mensagem", err);
-    return json({ detail: "Erro ao gerar resposta." }, 500);
+    const mensagemErro =
+      err && typeof err === "object" && "message" in err ? String(err.message) : "Erro desconhecido";
+    return json({ detail: `Erro ao gerar resposta: ${mensagemErro}` }, 500);
   }
 }
 
