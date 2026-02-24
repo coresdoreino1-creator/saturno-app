@@ -4,8 +4,8 @@ compatibility_date = "2025-11-29"
 
 [vars]
 CONTEXT_IDENTIFIER = "assistente_confeitaria"
-CORS_ALLOW_ORIGIN = "https://saturnogestao.vercel.app"
-REQUIRE_API_KEY = "1"
+CORS_ALLOW_ORIGIN = "*"
+REQUIRE_API_KEY = "0"
 MAX_MESSAGE_CHARS = "2000"
 GROQ_MODEL = "llama-3.3-70b-versatile"
 GROQ_TEMPERATURE = "0.3"

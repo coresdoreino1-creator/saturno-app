@@ -66,6 +66,52 @@ function csvFromEnv(value) {
     .filter(Boolean);
 }
 
+function parseFlexibleNumber(value, fallbackValue) {
+  if (value === undefined || value === null || value === "") return fallbackValue;
+  const normalized = String(value).trim().replace(",", ".");
+  const parsed = Number(normalized);
+  return Number.isFinite(parsed) ? parsed : fallbackValue;
+}
+
+function normalizeGroqModel(value) {
+  const defaultModel = "llama-3.3-70b-versatile";
+  if (!value) return defaultModel;
+  const raw = String(value).trim();
+  if (!raw) return defaultModel;
+
+  const withoutAccent = raw.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  const lowerNoAccent = withoutAccent.toLowerCase();
+  if (lowerNoAccent === "llama-3.3-70b-versatil") return defaultModel;
+  return withoutAccent.replace(/versatil/gi, "versatile");
+}
+
+function resolveApiKey(env) {
+  const candidates = [
+    env.ACOLHEIA_API_KEY,
+    env.SATURNO_API_KEY,
+    env.ASSISTANT_API_KEY,
+    env.NEXT_PUBLIC_SATURNO_API_KEY,
+  ];
+  for (const item of candidates) {
+    if (typeof item !== "string") continue;
+    const value = item.trim();
+    if (!value) continue;
+    const lower = value.toLowerCase();
+    if (lower === "x-saturno-key" || lower === "x-jornasa-key") continue;
+    return value;
+  }
+  return null;
+}
+
+function resolveApiHeaderName(env) {
+  const raw = (env.ASSISTANT_API_KEY_HEADER || env.EXPO_PUBLIC_ASSISTANT_X_KEY || "x-saturno-key")
+    .toString()
+    .trim()
+    .toLowerCase();
+  if (!raw || /\s/.test(raw) || raw.length > 80) return "x-saturno-key";
+  return raw;
+}
+
 async function requireAuth(request, env) {
   const auth = request.headers.get("Authorization") || "";
   const token = auth.startsWith("Bearer ") ? auth.slice(7) : null;
@@ -163,14 +209,24 @@ async function routeSupabase(request, env, userId, pathname, searchParams) {
 
 async function handleMensagem(request, env) {
   try {
-    const requireApiKey = (env.REQUIRE_API_KEY || "1") === "1";
+    const requireApiKey = (env.REQUIRE_API_KEY || "0") === "1";
+    const configuredApiKey = resolveApiKey(env);
+    const configuredApiHeader = resolveApiHeaderName(env);
     if (requireApiKey) {
-      if (!env.ACOLHEIA_API_KEY) {
-        return json({ detail: "Servico indisponivel: autenticacao nao configurada." }, 503);
+      if (!configuredApiKey) {
+        return json(
+          {
+            detail:
+              "Servico indisponivel: autenticacao nao configurada. Defina ACOLHEIA_API_KEY (ou SATURNO_API_KEY).",
+          },
+          503
+        );
       }
       const providedKey =
-        request.headers.get("x-saturno-key") || request.headers.get("x-jornasa-key");
-      if (providedKey !== env.ACOLHEIA_API_KEY) {
+        request.headers.get(configuredApiHeader) ||
+        request.headers.get("x-saturno-key") ||
+        request.headers.get("x-jornasa-key");
+      if (providedKey !== configuredApiKey) {
         return json({ detail: "Chave de acesso invalida." }, 401);
       }
     }
@@ -178,7 +234,7 @@ async function handleMensagem(request, env) {
     const payload = await request.json();
     const mensagem = (payload.mensagem || "").trim();
     if (!mensagem) return json({ detail: "Mensagem nao pode ser vazia." }, 400);
-    const maxChars = Number(env.MAX_MESSAGE_CHARS || 2000);
+    const maxChars = Math.max(10, Math.floor(parseFlexibleNumber(env.MAX_MESSAGE_CHARS, 2000)));
     if (mensagem.length > maxChars) {
       return json({ detail: `Mensagem excede o limite de ${maxChars} caracteres.` }, 413);
     }
@@ -200,7 +256,7 @@ async function handleMensagem(request, env) {
       fontes: [],
       contexto: env.CONTEXT_IDENTIFIER || "assistente_confeitaria",
       generated_at: agora,
-      model_used: `groq:${env.GROQ_MODEL || "llama-3.3-70b-versatile"}`,
+      model_used: `groq:${normalizeGroqModel(env.GROQ_MODEL)}`,
       used_web_search: buscarWeb,
       is_fallback: false,
     });
@@ -240,7 +296,10 @@ Formato preferencial:
 async function chamarGroq(prompt, env) {
   const apiKey = env.GROQ_API_KEY;
   if (!apiKey) throw new Error("GROQ_API_KEY ausente");
-  const model = env.GROQ_MODEL || "llama-3.3-70b-versatile";
+  const model = normalizeGroqModel(env.GROQ_MODEL);
+  const temperature = parseFlexibleNumber(env.GROQ_TEMPERATURE, 0.3);
+  const topP = parseFlexibleNumber(env.GROQ_TOP_P, 0.9);
+  const maxTokens = Math.max(100, Math.floor(parseFlexibleNumber(env.GROQ_MAX_TOKENS, 700)));
 
   const resp = await fetch("https://api.groq.com/openai/v1/chat/completions", {
     method: "POST",
@@ -251,12 +310,15 @@ async function chamarGroq(prompt, env) {
     body: JSON.stringify({
       model,
       messages: [{ role: "user", content: prompt }],
-      temperature: Number(env.GROQ_TEMPERATURE || 0.3),
-      top_p: Number(env.GROQ_TOP_P || 0.9),
-      max_tokens: Number(env.GROQ_MAX_TOKENS || 700),
+      temperature,
+      top_p: topP,
+      max_tokens: maxTokens,
     }),
   });
-  if (!resp.ok) throw new Error(`Groq HTTP ${resp.status}`);
+  if (!resp.ok) {
+    const errorText = await resp.text();
+    throw new Error(`Groq HTTP ${resp.status}: ${errorText.slice(0, 300)}`);
+  }
   const data = await resp.json();
   return data?.choices?.[0]?.message?.content || "";
 }
