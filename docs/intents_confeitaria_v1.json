@@ -1,0 +1,799 @@
+{
+  "version": "v1",
+  "app": "Saturno Gestao",
+  "idioma": "pt-BR",
+  "total_intents": 60,
+  "categorias": [
+    "precificacao",
+    "compras",
+    "producao",
+    "estoque",
+    "pedidos",
+    "atendimento",
+    "vendas",
+    "marketing_basico",
+    "financas_basicas"
+  ],
+  "intents": [
+    {
+      "id": "PRE-01",
+      "categoria": "precificacao",
+      "intencao": "Calcular preco de bolo com base em custo e margem",
+      "exemplos_pergunta": [
+        "Como calcular o preco de um bolo de 2kg?",
+        "Qual valor cobrar nesse bolo personalizado?",
+        "Meu custo deu 95 reais, quanto devo vender?"
+      ],
+      "resposta_ideal": "Levante custo total (ingredientes + embalagem + mao de obra + taxas). Use: preco = custo total / (1 - margem). Exemplo: custo R$95, margem 60%, preco = 95/0,40 = R$237,50. Arredonde para R$239 e valide com mercado local.",
+      "erro_comum": "Cobrar apenas dobrando ingrediente e ignorando mao de obra e taxas.",
+      "resposta_corrigida": "Nao use so 2x ingrediente. Inclua embalagem, tempo e taxa. Sem isso, o preco parece alto para cliente, mas fica baixo para sua margem."
+    },
+    {
+      "id": "PRE-02",
+      "categoria": "precificacao",
+      "intencao": "Definir valor de docinho por unidade",
+      "exemplos_pergunta": [
+        "Quanto cobrar por brigadeiro gourmet?",
+        "Meu docinho custa 1,30, qual preco final?",
+        "Preciso de preco por cento e por unidade"
+      ],
+      "resposta_ideal": "Calcule custo unitario e aplique margem alvo. Se custo = R$1,30 e margem 55%, preco = 1,30/0,45 = R$2,89. Pode vender a R$2,90 unidade ou R$280 o cento (desconto por volume planejado).",
+      "erro_comum": "Copiar preco da concorrencia sem saber proprio custo.",
+      "resposta_corrigida": "Use preco de mercado so como referencia final. Primeiro feche seu custo real e margem minima."
+    },
+    {
+      "id": "PRE-03",
+      "categoria": "precificacao",
+      "intencao": "Separar preco para atacado e varejo",
+      "exemplos_pergunta": [
+        "Como montar preco para revenda?",
+        "Posso dar desconto para cafeteria parceira?",
+        "Qual diferenca entre atacado e varejo?"
+      ],
+      "resposta_ideal": "Crie 2 tabelas: varejo e atacado por faixa de volume. Exemplo: custo unitario R$4,20. Varejo com margem 60% = R$10,50. Atacado com margem 40% = R$7,00, com pedido minimo de 50 unidades.",
+      "erro_comum": "Dar desconto de atacado para pedido pequeno.",
+      "resposta_corrigida": "Desconto por volume precisa ter regra. Defina pedido minimo e prazo de encomenda para manter lucro."
+    },
+    {
+      "id": "PRE-04",
+      "categoria": "precificacao",
+      "intencao": "Incluir frete no preco",
+      "exemplos_pergunta": [
+        "Como cobrar entrega do bolo?",
+        "Frete entra no preco ou separado?",
+        "Estou perdendo dinheiro com entrega"
+      ],
+      "resposta_ideal": "Frete deve aparecer como taxa separada ou faixa por distancia. Exemplo: ate 5 km R$15, de 5 a 10 km R$25. Se incluir no produto, registre no custo para nao comer margem.",
+      "erro_comum": "Absorver todo frete para nao perder venda.",
+      "resposta_corrigida": "Nao absorva sempre. Crie politica clara de entrega e comunique no primeiro contato."
+    },
+    {
+      "id": "PRE-05",
+      "categoria": "precificacao",
+      "intencao": "Calcular preco com taxa de app/maquininha",
+      "exemplos_pergunta": [
+        "Como precificar venda com taxa de cartao?",
+        "No app cobram 12%, como ajustar?",
+        "Meu lucro cai muito no marketplace"
+      ],
+      "resposta_ideal": "Some taxas no custo variavel. Exemplo: preco base R$120, taxa 12% => custo de taxa R$14,40. Para manter margem, recalcule preco alvo incluindo essa taxa no custo total.",
+      "erro_comum": "Aplicar taxa depois do preco fechado e aceitar margem menor sem perceber.",
+      "resposta_corrigida": "Sempre precifique por canal. O mesmo produto pode ter preco diferente no direto e no app."
+    },
+    {
+      "id": "PRE-06",
+      "categoria": "precificacao",
+      "intencao": "Definir valor da propria hora de trabalho",
+      "exemplos_pergunta": [
+        "Quanto vale minha hora na confeitaria?",
+        "Nao sei incluir meu tempo no preco",
+        "Como calcular mao de obra por bolo?"
+      ],
+      "resposta_ideal": "Defina renda mensal alvo e horas produtivas reais. Exemplo: alvo R$4.000 e 160h mes => R$25/h. Se bolo leva 2,5h, mao de obra = R$62,50 no custo.",
+      "erro_comum": "Nao cobrar o proprio tempo.",
+      "resposta_corrigida": "Sem mao de obra no calculo, voce troca tempo por faturamento sem lucro real."
+    },
+    {
+      "id": "PRE-07",
+      "categoria": "precificacao",
+      "intencao": "Reajustar preco sem perder cliente",
+      "exemplos_pergunta": [
+        "Como aumentar preco sem assustar?",
+        "Subiu tudo no mercado, e agora?",
+        "Quando devo reajustar tabela?"
+      ],
+      "resposta_ideal": "Reajuste por custo e reposicionamento. Exemplo: custo subiu 15%, aplique reajuste gradual de 8% agora e revise em 45 dias. Comunique valor agregado: qualidade, pontualidade e personalizacao.",
+      "erro_comum": "Subir preco sem revisar ficha tecnica.",
+      "resposta_corrigida": "Antes de reajustar, atualize custos item a item e ajuste os produtos mais impactados."
+    },
+    {
+      "id": "PRE-08",
+      "categoria": "precificacao",
+      "intencao": "Criar preco minimo para nao ter prejuizo",
+      "exemplos_pergunta": [
+        "Qual menor preco que posso cobrar?",
+        "Quero evitar fechar pedido no prejuizo",
+        "Como definir preco piso?"
+      ],
+      "resposta_ideal": "Preco piso = custo total + margem minima de seguranca. Exemplo: custo R$68 e margem minima 25% => preco piso = 68/0,75 = R$90,67. Abaixo de R$91 voce reduz saude financeira.",
+      "erro_comum": "Aceitar qualquer valor para nao perder cliente.",
+      "resposta_corrigida": "Se for negociar, reduza escopo (decoracao, tamanho, itens extras), nao reduza abaixo do preco piso."
+    },
+    {
+      "id": "COM-01",
+      "categoria": "compras",
+      "intencao": "Montar lista de compras semanal",
+      "exemplos_pergunta": [
+        "Como planejar compras da semana?",
+        "Compro demais e sobra tudo",
+        "Qual metodo simples de compras?"
+      ],
+      "resposta_ideal": "Use previsao de pedidos + estoque atual + margem de seguranca 10%. Gere lista por categoria (secos, frios, embalagem) e defina dia fixo de compra.",
+      "erro_comum": "Comprar por impulso sem base nos pedidos.",
+      "resposta_corrigida": "Compre com base no mapa da semana, nao no feeling. Isso reduz desperdicio e falta de item."
+    },
+    {
+      "id": "COM-02",
+      "categoria": "compras",
+      "intencao": "Comparar fornecedores por custo real",
+      "exemplos_pergunta": [
+        "Como saber qual fornecedor vale mais?",
+        "Preco menor nem sempre compensa?",
+        "Como comparar marcas de chocolate?"
+      ],
+      "resposta_ideal": "Compare preco por kg/litro, frete, prazo e qualidade. Exemplo: fornecedor A R$32/kg + R$20 frete; fornecedor B R$34/kg sem frete. Para 10 kg: A = R$340, B = R$340. Empate no custo, decida por prazo e padrao.",
+      "erro_comum": "Escolher apenas pelo menor preco unitario.",
+      "resposta_corrigida": "Calcule custo total entregue e impacto na qualidade final antes de decidir."
+    },
+    {
+      "id": "COM-03",
+      "categoria": "compras",
+      "intencao": "Definir estoque minimo de itens criticos",
+      "exemplos_pergunta": [
+        "Qual estoque minimo devo ter?",
+        "Sempre falta leite condensado",
+        "Como evitar ruptura?"
+      ],
+      "resposta_ideal": "Defina minimo por consumo medio e prazo de reposicao. Exemplo: uso 20 latas/semana e reposicao em 3 dias. Mantenha minimo de 12 latas para nao parar producao.",
+      "erro_comum": "Trabalhar com estoque zero em item de alta saida.",
+      "resposta_corrigida": "Itens A precisam de estoque de seguranca para proteger seu prazo de entrega."
+    },
+    {
+      "id": "COM-04",
+      "categoria": "compras",
+      "intencao": "Comprar embalagem sem travar caixa",
+      "exemplos_pergunta": [
+        "Vale comprar embalagem em grande volume?",
+        "Como economizar em caixa sem faltar?",
+        "Tenho pouco caixa para comprar embalagem"
+      ],
+      "resposta_ideal": "Use compra escalonada. Garanta 30 dias para itens de giro alto e 15 dias para giro medio. Compare desconto por volume com impacto no capital de giro.",
+      "erro_comum": "Comprar 3 meses de embalagem para ganhar desconto pequeno.",
+      "resposta_corrigida": "Desconto bom e aquele que nao suga seu caixa. Priorize liquidez e reposicao frequente."
+    },
+    {
+      "id": "COM-05",
+      "categoria": "compras",
+      "intencao": "Registrar variacao de preco dos insumos",
+      "exemplos_pergunta": [
+        "Como acompanhar aumento dos ingredientes?",
+        "Toda semana muda o preco",
+        "Como atualizar ficha tecnica rapido?"
+      ],
+      "resposta_ideal": "Atualize tabela de insumos 1x por semana com data e fornecedor. Marque variacao percentual. Se item subir acima de 8%, revisar preco dos produtos ligados a ele.",
+      "erro_comum": "Atualizar custo so quando sente queda no lucro.",
+      "resposta_corrigida": "Transforme atualizacao de custo em rotina fixa para evitar surpresas."
+    },
+    {
+      "id": "COM-06",
+      "categoria": "compras",
+      "intencao": "Planejar compras para datas sazonais",
+      "exemplos_pergunta": [
+        "Como comprar para Pascoa sem excesso?",
+        "Tenho medo de faltar chocolate em epoca forte",
+        "Como fazer previsao de sazonal"
+      ],
+      "resposta_ideal": "Use historico + meta conservadora. Exemplo: vendeu 120 ovos no ano passado; projete 140 com margem de seguranca de 10%. Compre em lotes: 60%, depois 25%, depois 15% conforme vendas reais.",
+      "erro_comum": "Comprar 100% do volume antes de validar demanda.",
+      "resposta_corrigida": "Compre por etapas para reduzir risco de sobra e manter caixa saudavel."
+    },
+    {
+      "id": "COM-07",
+      "categoria": "compras",
+      "intencao": "Negociar prazo com fornecedor",
+      "exemplos_pergunta": [
+        "Como negociar melhor prazo de pagamento?",
+        "Fornecedor so vende a vista",
+        "Como melhorar fluxo de caixa com compras?"
+      ],
+      "resposta_ideal": "Mostre recorrencia e previsao de volume para pedir prazo. Exemplo: compra quinzenal de R$1.500 pode virar 14 dias no boleto. Priorize fornecedores que equilibram preco + prazo + constancia.",
+      "erro_comum": "Negociar so preco e esquecer prazo.",
+      "resposta_corrigida": "Prazo melhor pode valer mais que desconto pequeno, porque protege seu caixa."
+    },
+    {
+      "id": "PRD-01",
+      "categoria": "producao",
+      "intencao": "Montar cronograma diario de producao",
+      "exemplos_pergunta": [
+        "Como organizar minha producao de amanha?",
+        "Fico perdida com muitos pedidos",
+        "Como quebrar tarefas por horario?"
+      ],
+      "resposta_ideal": "Divida o dia em blocos: preparo base, montagem, finalizacao, embalagem e saida. Priorize pedidos por horario de entrega e complexidade. Reserve 15% do tempo para imprevistos.",
+      "erro_comum": "Comecar por qualquer pedido sem ordem.",
+      "resposta_corrigida": "Ordem por prazo e complexidade reduz atraso e retrabalho."
+    },
+    {
+      "id": "PRD-02",
+      "categoria": "producao",
+      "intencao": "Padronizar receita para manter qualidade",
+      "exemplos_pergunta": [
+        "Meu bolo varia muito, como padronizar?",
+        "Cada vez sai diferente",
+        "Como manter mesmo sabor e textura?"
+      ],
+      "resposta_ideal": "Use ficha tecnica com gramagem exata, tempo, temperatura e rendimento esperado. Registre ajustes e mantenha uma versao oficial da receita.",
+      "erro_comum": "Cozinhar no olho sem registro.",
+      "resposta_corrigida": "Padrao vem de medida e registro. Sem isso, voce perde consistencia e margem."
+    },
+    {
+      "id": "PRD-03",
+      "categoria": "producao",
+      "intencao": "Aumentar capacidade sem perder qualidade",
+      "exemplos_pergunta": [
+        "Como produzir mais sem virar caos?",
+        "Nao dou conta dos pedidos",
+        "Como escalar producao caseira?"
+      ],
+      "resposta_ideal": "Escalone por etapas: lote de bases, mise en place antecipado, checklist de finalizacao e limite diario de pedidos. Exemplo: subir de 3 para 4 bolos/dia apos 2 semanas de teste.",
+      "erro_comum": "Aceitar mais pedidos sem ajustar processo.",
+      "resposta_corrigida": "Crescimento seguro exige limite operacional e testes controlados."
+    },
+    {
+      "id": "PRD-04",
+      "categoria": "producao",
+      "intencao": "Criar rotina de pre-preparo",
+      "exemplos_pergunta": [
+        "Como adiantar producao da semana?",
+        "Quero ganhar tempo no dia da entrega",
+        "O que posso deixar pronto antes?"
+      ],
+      "resposta_ideal": "Defina pre-preparo por validade: massas congeladas, recheios base, embalagens separadas e etiquetas prontas. Planeje no inicio da semana para reduzir pico de estresse.",
+      "erro_comum": "Fazer tudo no dia da entrega.",
+      "resposta_corrigida": "Pre-preparo reduz atraso e melhora foco na decoracao final."
+    },
+    {
+      "id": "PRD-05",
+      "categoria": "producao",
+      "intencao": "Gerir producao em datas com alta demanda",
+      "exemplos_pergunta": [
+        "Como organizar producao na Pascoa?",
+        "Natal sempre vira correria",
+        "Como evitar atraso em data forte?"
+      ],
+      "resposta_ideal": "Trabalhe com calendario regressivo, corte de pedidos por data e lotes por linha de produto. Confirme insumos criticos com antecedencia minima de 15 dias.",
+      "erro_comum": "Deixar para confirmar pedidos e compras na ultima semana.",
+      "resposta_corrigida": "Datas fortes pedem previsao, bloqueio de agenda e comunicacao antecipada com clientes."
+    },
+    {
+      "id": "PRD-06",
+      "categoria": "producao",
+      "intencao": "Reduzir retrabalho na finalizacao",
+      "exemplos_pergunta": [
+        "Perco tempo refazendo acabamento",
+        "Como evitar erro na decoracao?",
+        "Minha finalizacao atrasa tudo"
+      ],
+      "resposta_ideal": "Use checklist de finalizacao por produto: cor, topo, escrita, embalagem e foto de conferenca. Padronize ferramentas e ordem de montagem.",
+      "erro_comum": "Finalizar sem checklist e descobrir erro no fim.",
+      "resposta_corrigida": "Conferencia em 2 minutos evita retrabalho caro e atraso de entrega."
+    },
+    {
+      "id": "PRD-07",
+      "categoria": "producao",
+      "intencao": "Definir limite diario de producao",
+      "exemplos_pergunta": [
+        "Quantos bolos consigo aceitar por dia?",
+        "Como saber meu limite real?",
+        "Nao quero estourar prazo"
+      ],
+      "resposta_ideal": "Calcule horas produtivas x tempo medio por produto. Exemplo: 8h disponiveis, bolo personalizado leva 2h. Capacidade teorica 4; capacidade segura 3 com folga operacional.",
+      "erro_comum": "Usar capacidade teorica sem folga.",
+      "resposta_corrigida": "Sempre trabalhe com capacidade segura para proteger prazo e qualidade."
+    },
+    {
+      "id": "EST-01",
+      "categoria": "estoque",
+      "intencao": "Controlar validade dos insumos",
+      "exemplos_pergunta": [
+        "Como evitar ingrediente vencido?",
+        "Perco muito por validade",
+        "Qual rotina de controle de vencimento?"
+      ],
+      "resposta_ideal": "Aplique FEFO: primeiro que vence, primeiro que sai. Rotule todos os itens com data de abertura e vencimento e revise 2 vezes por semana.",
+      "erro_comum": "Guardar produto sem etiqueta.",
+      "resposta_corrigida": "Sem data visivel, voce perde controle e aumenta desperdicio."
+    },
+    {
+      "id": "EST-02",
+      "categoria": "estoque",
+      "intencao": "Fazer inventario rapido",
+      "exemplos_pergunta": [
+        "Como contar estoque sem perder horas?",
+        "Existe inventario simples semanal?",
+        "Como bater saldo com compras?"
+      ],
+      "resposta_ideal": "Use inventario ciclico: itens A toda semana, itens B quinzenal, itens C mensal. Compare saldo fisico x sistema e ajuste divergencias no mesmo dia.",
+      "erro_comum": "Inventario so no fim do mes e sem prioridade.",
+      "resposta_corrigida": "Inventario curto e frequente evita surpresas no meio da producao."
+    },
+    {
+      "id": "EST-03",
+      "categoria": "estoque",
+      "intencao": "Definir curva ABC de insumos",
+      "exemplos_pergunta": [
+        "Como usar curva ABC na confeitaria?",
+        "Quais itens devo monitorar mais?",
+        "No que focar primeiro no estoque?"
+      ],
+      "resposta_ideal": "Classifique por impacto financeiro. Itens A (maior gasto) recebem controle semanal e compra planejada. Itens B controle quinzenal. Itens C mensal.",
+      "erro_comum": "Dar mesma atencao para todos os itens.",
+      "resposta_corrigida": "Foco nos itens A traz mais resultado com menos esforco."
+    },
+    {
+      "id": "EST-04",
+      "categoria": "estoque",
+      "intencao": "Controlar perdas por quebra e erro",
+      "exemplos_pergunta": [
+        "Como registrar perda de producao?",
+        "Quebrei material e nao sei onde lancar",
+        "Como medir desperdicio real?"
+      ],
+      "resposta_ideal": "Registre perda por motivo (vencimento, quebra, erro de receita) e valor estimado. Feche indicador semanal de perda (%) para decidir acao corretiva.",
+      "erro_comum": "Nao registrar perda pequena.",
+      "resposta_corrigida": "Perda pequena recorrente vira prejuizo grande no mes."
+    },
+    {
+      "id": "EST-05",
+      "categoria": "estoque",
+      "intencao": "Organizar estoque fisico por setor",
+      "exemplos_pergunta": [
+        "Como arrumar meu estoque de forma pratica?",
+        "Nao encontro nada na hora de produzir",
+        "Como separar secos e pereciveis?"
+      ],
+      "resposta_ideal": "Setorize: secos, refrigerados, congelados, embalagens e decoracoes. Padronize local fixo e etiqueta frontal para reduzir tempo de procura.",
+      "erro_comum": "Guardar item onde sobrou espaco.",
+      "resposta_corrigida": "Lugar fixo e etiquetado acelera producao e reduz erro."
+    },
+    {
+      "id": "EST-06",
+      "categoria": "estoque",
+      "intencao": "Definir ponto de reposicao",
+      "exemplos_pergunta": [
+        "Quando devo recomprar insumo?",
+        "Sempre percebo falta tarde demais",
+        "Como calcular ponto de pedido?"
+      ],
+      "resposta_ideal": "Ponto de reposicao = consumo medio diario x prazo de entrega + estoque seguranca. Exemplo: consumo 2kg/dia, prazo 4 dias, seguranca 3kg => reposicao em 11kg.",
+      "erro_comum": "Repor so quando acaba.",
+      "resposta_corrigida": "Repor no ponto certo evita ruptura e compra emergencial cara."
+    },
+    {
+      "id": "PED-01",
+      "categoria": "pedidos",
+      "intencao": "Criar fluxo padrao do pedido",
+      "exemplos_pergunta": [
+        "Como organizar pedidos do inicio ao fim?",
+        "Qual fluxo ideal de encomenda?",
+        "Quero padronizar meu processo"
+      ],
+      "resposta_ideal": "Use etapas: lead -> orcamento -> confirmado com sinal -> producao -> entrega -> pos-venda. So avance de etapa com informacao completa e registrada.",
+      "erro_comum": "Comecar producao sem sinal e sem confirmacao final.",
+      "resposta_corrigida": "Pedido confirmado precisa de dados fechados e pagamento de reserva."
+    },
+    {
+      "id": "PED-02",
+      "categoria": "pedidos",
+      "intencao": "Definir sinal minimo para reserva",
+      "exemplos_pergunta": [
+        "Quanto cobrar de entrada no pedido?",
+        "Posso reservar sem pagamento?",
+        "Como evitar desistencias de ultima hora?"
+      ],
+      "resposta_ideal": "Adote sinal de 30% a 50% para bloquear agenda. Exemplo: pedido de R$300 com sinal 40% = R$120 na confirmacao e R$180 na retirada/entrega.",
+      "erro_comum": "Reservar agenda sem nenhum pagamento.",
+      "resposta_corrigida": "Sem sinal, o risco de cancelamento fica todo com voce."
+    },
+    {
+      "id": "PED-03",
+      "categoria": "pedidos",
+      "intencao": "Tratar alteracao de pedido perto da entrega",
+      "exemplos_pergunta": [
+        "Cliente quer mudar tudo em cima da hora",
+        "Como lidar com mudanca de ultima hora?",
+        "Posso cobrar taxa de alteracao?"
+      ],
+      "resposta_ideal": "Defina politica: alteracoes ate X horas sem taxa; depois disso com taxa conforme impacto. Exemplo: mudanca em menos de 24h = taxa de 15%.",
+      "erro_comum": "Aceitar qualquer alteracao sem ajustar custo e prazo.",
+      "resposta_corrigida": "Mudou escopo, muda preco e prazo. Comunique com clareza e registro."
+    },
+    {
+      "id": "PED-04",
+      "categoria": "pedidos",
+      "intencao": "Confirmar pedido com checklist",
+      "exemplos_pergunta": [
+        "O que preciso confirmar com o cliente?",
+        "Como evitar erro de sabor e horario?",
+        "Tem um checklist de fechamento?"
+      ],
+      "resposta_ideal": "Checklist minimo: data, horario, endereco, produto, tamanho, sabor, decoracao, nome para escrita, valor, forma de pagamento e contato. Envie resumo final por mensagem.",
+      "erro_comum": "Confiar em conversa antiga sem resumo final.",
+      "resposta_corrigida": "Resumo final evita ruido e reduz retrabalho no dia da entrega."
+    },
+    {
+      "id": "PED-05",
+      "categoria": "pedidos",
+      "intencao": "Organizar agenda por faixa de horario",
+      "exemplos_pergunta": [
+        "Como distribuir entregas no dia?",
+        "Tenho choque de horario de retirada",
+        "Qual melhor jeito de agendar?"
+      ],
+      "resposta_ideal": "Trabalhe com janelas de 30-60 min por retirada/entrega. Limite quantidade por janela conforme capacidade de finalizacao e deslocamento.",
+      "erro_comum": "Marcar muitos pedidos no mesmo horario.",
+      "resposta_corrigida": "Janela de agenda protege pontualidade e qualidade da entrega."
+    },
+    {
+      "id": "PED-06",
+      "categoria": "pedidos",
+      "intencao": "Padronizar politica de cancelamento",
+      "exemplos_pergunta": [
+        "Como fazer regra de cancelamento?",
+        "Cliente cancelou em cima da hora",
+        "Posso reter o sinal?"
+      ],
+      "resposta_ideal": "Defina politica escrita e divulgada: prazo para cancelamento, percentual retido e possibilidade de credito futuro. Oriente consultar contador/advogado para redacao final.",
+      "erro_comum": "Nao ter politica e decidir caso a caso no impulso.",
+      "resposta_corrigida": "Regra clara evita conflito e protege seu caixa."
+    },
+    {
+      "id": "PED-07",
+      "categoria": "pedidos",
+      "intencao": "Fazer pos-venda apos entrega",
+      "exemplos_pergunta": [
+        "Vale mandar mensagem depois da entrega?",
+        "Como pedir feedback sem ser invasiva?",
+        "Como gerar recompra?"
+      ],
+      "resposta_ideal": "Envie mensagem curta em ate 24h: confirmar recebimento, pedir nota de 0-10 e oferecer proxima compra com beneficio simples. Registre feedback para melhorar processo.",
+      "erro_comum": "Encerrar contato apos entregar produto.",
+      "resposta_corrigida": "Pos-venda aumenta recompra e indicacao com baixo custo."
+    },
+    {
+      "id": "ATD-01",
+      "categoria": "atendimento",
+      "intencao": "Responder cliente sem demorar",
+      "exemplos_pergunta": [
+        "Como atender rapido no WhatsApp?",
+        "Demoro para responder e perco pedido",
+        "Como organizar primeira resposta?"
+      ],
+      "resposta_ideal": "Use resposta inicial padrao com 4 perguntas: data, produto, quantidade/tamanho e bairro. Meta de primeira resposta em ate 1h no horario comercial.",
+      "erro_comum": "Esperar ter todos os detalhes para responder.",
+      "resposta_corrigida": "Responda rapido, colete dados e avance para proposta completa."
+    },
+    {
+      "id": "ATD-02",
+      "categoria": "atendimento",
+      "intencao": "Lidar com cliente que pede desconto",
+      "exemplos_pergunta": [
+        "Cliente pediu desconto, o que dizer?",
+        "Como negociar sem desvalorizar?",
+        "Posso oferecer alternativa mais barata?"
+      ],
+      "resposta_ideal": "Evite desconto direto no mesmo produto. Ofereca ajuste de escopo: tamanho menor, decoracao mais simples ou retirada sem entrega. Preserve preco piso.",
+      "erro_comum": "Dar desconto imediato para fechar.",
+      "resposta_corrigida": "Negocie formato, nao sua margem minima."
+    },
+    {
+      "id": "ATD-03",
+      "categoria": "atendimento",
+      "intencao": "Estruturar mensagem de orcamento",
+      "exemplos_pergunta": [
+        "Como enviar orcamento claro?",
+        "Meu cliente fica confuso com os valores",
+        "Tem modelo de proposta curta?"
+      ],
+      "resposta_ideal": "Modelo: item, descricao, valor, prazo, forma de pagamento, politica de sinal e validade da proposta. Feche com CTA: 'Posso reservar sua data com sinal de X%'.",
+      "erro_comum": "Enviar so preco sem condicoes.",
+      "resposta_corrigida": "Orcamento completo reduz duvida e acelera fechamento."
+    },
+    {
+      "id": "ATD-04",
+      "categoria": "atendimento",
+      "intencao": "Gerir reclamacao de cliente",
+      "exemplos_pergunta": [
+        "Cliente reclamou da entrega, e agora?",
+        "Como responder critica sem conflito?",
+        "Qual protocolo de reclamacao?"
+      ],
+      "resposta_ideal": "Aplique 3 passos: ouvir, validar fato, propor solucao com prazo. Registre ocorrencia e causa raiz para evitar repeticao.",
+      "erro_comum": "Responder no impulso e entrar em discussao.",
+      "resposta_corrigida": "Postura calma e proposta objetiva preservam reputacao e relacao."
+    },
+    {
+      "id": "ATD-05",
+      "categoria": "atendimento",
+      "intencao": "Padronizar confirmacao de entrega",
+      "exemplos_pergunta": [
+        "Como confirmar pedido no dia anterior?",
+        "Quero evitar desencontro na entrega",
+        "Tem mensagem de confirmacao pronta?"
+      ],
+      "resposta_ideal": "Confirme 24h antes com resumo: produto, horario, local, valor pendente e contato. No dia, enviar aviso de saida/retirada.",
+      "erro_comum": "Nao reconfirmar e descobrir mudanca em cima da hora.",
+      "resposta_corrigida": "Confirmacao preventiva reduz atraso e falha de comunicacao."
+    },
+    {
+      "id": "ATD-06",
+      "categoria": "atendimento",
+      "intencao": "Organizar atendimento por prioridade",
+      "exemplos_pergunta": [
+        "Como priorizar mensagens quando lota?",
+        "Recebo muita pergunta ao mesmo tempo",
+        "Qual ordem de resposta ideal?"
+      ],
+      "resposta_ideal": "Priorize por urgencia e chance de fechamento: pedidos com data proxima, clientes com dados completos e retornos de pos-venda. Use etiquetas no CRM/chat.",
+      "erro_comum": "Responder por ordem aleatoria de notificacao.",
+      "resposta_corrigida": "Prioridade inteligente melhora conversao e reduz estresse."
+    },
+    {
+      "id": "VEN-01",
+      "categoria": "vendas",
+      "intencao": "Aumentar taxa de conversao de orcamentos",
+      "exemplos_pergunta": [
+        "Faço muito orcamento e fecho pouco",
+        "Como converter mais pedidos?",
+        "Como melhorar fechamento no WhatsApp?"
+      ],
+      "resposta_ideal": "Reduza friccao: proposta clara, prazo de resposta curto e CTA com sinal. Monitore conversao semanal: pedidos fechados / orcamentos enviados.",
+      "erro_comum": "Enviar proposta e nao fazer follow-up.",
+      "resposta_corrigida": "Follow-up em 24h aumenta fechamento sem parecer insistente."
+    },
+    {
+      "id": "VEN-02",
+      "categoria": "vendas",
+      "intencao": "Criar combo para elevar ticket medio",
+      "exemplos_pergunta": [
+        "Como montar combos lucrativos?",
+        "Quero vender mais no mesmo pedido",
+        "Que adicional oferecer com bolo?"
+      ],
+      "resposta_ideal": "Crie combo com margem boa e valor percebido alto. Exemplo: bolo R$150 + 20 docinhos R$60 + topper R$15 => combo R$209 (ancora em R$225).",
+      "erro_comum": "Montar combo sem calcular margem de cada item.",
+      "resposta_corrigida": "Combo so funciona se margem total continuar saudavel."
+    },
+    {
+      "id": "VEN-03",
+      "categoria": "vendas",
+      "intencao": "Definir meta semanal de vendas",
+      "exemplos_pergunta": [
+        "Como criar meta de vendas realista?",
+        "Quero meta simples para semana",
+        "Quanto preciso vender para bater objetivo?"
+      ],
+      "resposta_ideal": "Parta da meta mensal e quebre por semana e ticket medio. Exemplo: meta mensal R$12.000, 4 semanas => R$3.000/semana. Com ticket de R$120, precisa de 25 pedidos/semana.",
+      "erro_comum": "Definir meta sem base no historico e capacidade.",
+      "resposta_corrigida": "Meta precisa ser desafiadora e possivel com sua operacao atual."
+    },
+    {
+      "id": "VEN-04",
+      "categoria": "vendas",
+      "intencao": "Criar oferta de entrada e premium",
+      "exemplos_pergunta": [
+        "Como montar opcoes basica e premium?",
+        "Cliente sempre pede o mais barato",
+        "Quero vender opcao recomendada"
+      ],
+      "resposta_ideal": "Use 3 niveis: basico, recomendado, premium. Exemplo bolo 1,5kg: R$120, R$159, R$219. Destaque beneficios da opcao recomendada para guiar decisao.",
+      "erro_comum": "Oferecer so uma opcao de produto.",
+      "resposta_corrigida": "Sem comparacao, cliente decide apenas por preco."
+    },
+    {
+      "id": "VEN-05",
+      "categoria": "vendas",
+      "intencao": "Recuperar cliente antigo",
+      "exemplos_pergunta": [
+        "Como trazer cliente que nao compra ha meses?",
+        "Tenho lista parada no WhatsApp",
+        "Como fazer campanha de reativacao?"
+      ],
+      "resposta_ideal": "Segmente clientes inativos (90+ dias) e envie oferta pontual com prazo curto. Exemplo: 'pedido esta semana com mini brinde'. Mensure taxa de retorno.",
+      "erro_comum": "Mandar mensagem igual para toda a base.",
+      "resposta_corrigida": "Personalizacao por historico aumenta resposta e evita bloqueio."
+    },
+    {
+      "id": "VEN-06",
+      "categoria": "vendas",
+      "intencao": "Definir valor minimo para pedido",
+      "exemplos_pergunta": [
+        "Preciso de pedido minimo?",
+        "Pedidos pequenos tomam muito tempo",
+        "Como definir valor minimo de encomenda?"
+      ],
+      "resposta_ideal": "Calcule custo operacional por pedido e defina piso comercial. Exemplo: abaixo de R$70 o tempo nao compensa. Estabeleca pedido minimo de R$80 para retirada.",
+      "erro_comum": "Aceitar micro pedidos sem avaliar custo de atendimento.",
+      "resposta_corrigida": "Pedido minimo protege margem e agenda."
+    },
+    {
+      "id": "MKT-01",
+      "categoria": "marketing_basico",
+      "intencao": "Planejar conteudo simples para Instagram",
+      "exemplos_pergunta": [
+        "O que postar para vender mais confeitaria?",
+        "Como organizar posts da semana?",
+        "Nao sei que conteudo criar"
+      ],
+      "resposta_ideal": "Use grade 3x por semana: prova social (cliente), bastidor de producao e oferta da semana. Sempre com CTA claro para pedido via WhatsApp.",
+      "erro_comum": "Postar so foto bonita sem chamada para acao.",
+      "resposta_corrigida": "Conteudo precisa direcionar para conversa e fechamento de pedido."
+    },
+    {
+      "id": "MKT-02",
+      "categoria": "marketing_basico",
+      "intencao": "Criar promocao sem destruir margem",
+      "exemplos_pergunta": [
+        "Como fazer promocao de forma segura?",
+        "Quero atrair cliente sem prejuizo",
+        "Desconto de quanto posso dar?"
+      ],
+      "resposta_ideal": "Promocao deve usar produto com margem de folga ou beneficio de baixo custo (ex.: topper simples). Exemplo: desconto maximo de 10% se margem original for acima de 45%.",
+      "erro_comum": "Dar desconto alto em produto de margem apertada.",
+      "resposta_corrigida": "Promocao boa aumenta giro sem comprometer lucro final."
+    },
+    {
+      "id": "MKT-03",
+      "categoria": "marketing_basico",
+      "intencao": "Montar calendario comercial mensal",
+      "exemplos_pergunta": [
+        "Como planejar datas do mes?",
+        "Quero aproveitar datas comemorativas",
+        "Como montar campanha mensal simples?"
+      ],
+      "resposta_ideal": "Escolha 2 datas principais e 1 campanha de rotina no mes. Planeje criacao, oferta, estoque e janela de pedidos com antecedencia minima de 15 dias.",
+      "erro_comum": "Lancar campanha sem planejamento de producao.",
+      "resposta_corrigida": "Campanha precisa estar alinhada com capacidade e insumos disponiveis."
+    },
+    {
+      "id": "MKT-04",
+      "categoria": "marketing_basico",
+      "intencao": "Usar depoimentos para gerar confianca",
+      "exemplos_pergunta": [
+        "Como usar feedback de cliente nas vendas?",
+        "Depoimento realmente ajuda?",
+        "Como pedir autorizacao para publicar?"
+      ],
+      "resposta_ideal": "Colete depoimento curto apos entrega e publique com contexto (evento/produto). Peça autorizacao de uso e conecte com CTA de encomenda.",
+      "erro_comum": "Publicar elogio sem contexto de produto ou chamada.",
+      "resposta_corrigida": "Depoimento com contexto aumenta confianca e conversao."
+    },
+    {
+      "id": "MKT-05",
+      "categoria": "marketing_basico",
+      "intencao": "Atrair clientes locais",
+      "exemplos_pergunta": [
+        "Como vender mais no meu bairro?",
+        "Quero atrair cliente proximo",
+        "Qual acao local funciona para doceria?"
+      ],
+      "resposta_ideal": "Use geolocalizacao nos posts, parcerias locais e campanhas de retirada com horario fixo. Divulgue tempo de entrega e raio atendido.",
+      "erro_comum": "Comunicar para publico muito amplo sem foco local.",
+      "resposta_corrigida": "Negocio de confeitaria sob encomenda cresce melhor com base local forte."
+    },
+    {
+      "id": "MKT-06",
+      "categoria": "marketing_basico",
+      "intencao": "Medir resultado de campanha simples",
+      "exemplos_pergunta": [
+        "Como saber se meu post vendeu?",
+        "Que metricas acompanhar no basico?",
+        "Como medir campanha de WhatsApp?"
+      ],
+      "resposta_ideal": "Acompanhe 3 indicadores: mensagens recebidas, orcamentos enviados e pedidos fechados. Compare antes e depois da campanha por 7 dias.",
+      "erro_comum": "Olhar apenas curtida e alcance.",
+      "resposta_corrigida": "Para venda, indicador principal e pedido fechado, nao vaidade."
+    },
+    {
+      "id": "FIN-01",
+      "categoria": "financas_basicas",
+      "intencao": "Separar dinheiro pessoal e da confeitaria",
+      "exemplos_pergunta": [
+        "Como parar de misturar contas pessoais?",
+        "Nao sei quanto sobra do negocio",
+        "Como organizar retirada mensal?"
+      ],
+      "resposta_ideal": "Crie conta separada para negocio e defina pro-labore fixo. Exemplo: retirar R$2.000/mensais e registrar qualquer extra como distribuicao, nao como custo do produto.",
+      "erro_comum": "Pagar gasto pessoal direto do caixa do negocio.",
+      "resposta_corrigida": "Separacao clara mostra lucro real e melhora decisao financeira."
+    },
+    {
+      "id": "FIN-02",
+      "categoria": "financas_basicas",
+      "intencao": "Montar fluxo de caixa semanal",
+      "exemplos_pergunta": [
+        "Como fazer fluxo de caixa simples?",
+        "Meu dinheiro some no fim da semana",
+        "Como prever entradas e saidas?"
+      ],
+      "resposta_ideal": "Registre entradas e saidas por dia e projete 4 semanas. Exemplo: entradas previstas R$3.500, saidas R$2.900, saldo projetado R$600. Atualize diariamente.",
+      "erro_comum": "Olhar so saldo da conta sem previsao.",
+      "resposta_corrigida": "Fluxo de caixa e previsao, nao fotografia do dia."
+    },
+    {
+      "id": "FIN-03",
+      "categoria": "financas_basicas",
+      "intencao": "Calcular ponto de equilibrio",
+      "exemplos_pergunta": [
+        "Quanto preciso faturar para nao ter prejuizo?",
+        "Qual meu ponto de equilibrio mensal?",
+        "Quantos pedidos preciso por mes?"
+      ],
+      "resposta_ideal": "Use: ponto de equilibrio = custos fixos / margem de contribuicao. Exemplo: fixos R$4.000 e margem 45% => R$8.889 de faturamento minimo.",
+      "erro_comum": "Definir meta sem saber ponto de equilibrio.",
+      "resposta_corrigida": "Primeiro cubra o ponto de equilibrio, depois foque meta de lucro."
+    },
+    {
+      "id": "FIN-04",
+      "categoria": "financas_basicas",
+      "intencao": "Controlar contas a receber",
+      "exemplos_pergunta": [
+        "Como organizar pagamentos pendentes?",
+        "Esqueço de cobrar saldo dos pedidos",
+        "Como reduzir atraso de recebimento?"
+      ],
+      "resposta_ideal": "Use lista de recebiveis com data, cliente, valor e status. Envie lembrete 24h antes do vencimento e confirme pagamento no ato da entrega.",
+      "erro_comum": "Confiar so na memoria para cobrar.",
+      "resposta_corrigida": "Rotina de cobranca reduz inadimplencia e melhora caixa."
+    },
+    {
+      "id": "FIN-05",
+      "categoria": "financas_basicas",
+      "intencao": "Criar reserva de emergencia do negocio",
+      "exemplos_pergunta": [
+        "Preciso de reserva na confeitaria?",
+        "Como montar caixa de seguranca?",
+        "Quanto guardar por mes?"
+      ],
+      "resposta_ideal": "Meta inicial: 1 a 3 meses de custo fixo. Exemplo: fixo R$3.000, reserva alvo minima R$9.000. Guardar 5% a 10% do faturamento mensal ate atingir meta.",
+      "erro_comum": "Retirar todo lucro sem formar reserva.",
+      "resposta_corrigida": "Reserva protege o negocio em meses fracos e imprevistos."
+    },
+    {
+      "id": "FIN-06",
+      "categoria": "financas_basicas",
+      "intencao": "Interpretar diferenca entre faturamento e lucro",
+      "exemplos_pergunta": [
+        "Faturei bem, mas nao sobrou dinheiro",
+        "Qual diferenca de faturamento e lucro?",
+        "Como saber se realmente lucrei?"
+      ],
+      "resposta_ideal": "Faturamento e tudo que entrou. Lucro e o que sobra apos todos os custos e despesas. Exemplo: faturou R$10.000, custo+despesa R$7.800, lucro R$2.200.",
+      "erro_comum": "Tratar faturamento como dinheiro livre.",
+      "resposta_corrigida": "Sempre olhe margem e lucro liquido para decidir crescimento."
+    },
+    {
+      "id": "FIN-07",
+      "categoria": "financas_basicas",
+      "intencao": "Planejar meta de lucro mensal",
+      "exemplos_pergunta": [
+        "Como definir meta de lucro para minha confeitaria?",
+        "Qual lucro mensal devo buscar?",
+        "Como sair do zero a zero?"
+      ],
+      "resposta_ideal": "Defina lucro alvo e converta em meta de faturamento. Exemplo: lucro desejado R$3.000, margem liquida 25% => faturamento necessario R$12.000. Quebre por semana e acompanhe.",
+      "erro_comum": "Ter meta so de vendas sem meta de margem.",
+      "resposta_corrigida": "Meta saudavel combina faturamento + margem + prazo de entrega."
+    }
+  ]
+}

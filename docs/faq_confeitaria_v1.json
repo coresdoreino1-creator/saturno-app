@@ -1,0 +1,488 @@
+{
+  "version": "v1",
+  "app": "Saturno Gestao",
+  "idioma": "pt-BR",
+  "total_faqs": 80,
+  "faqs": [
+    {
+      "id": "FAQ-001",
+      "categoria": "precificacao",
+      "pergunta": "Qual formula mais simples para precificar um bolo?",
+      "resposta": "Use: preco = custo total / (1 - margem). Exemplo: custo R$80 e margem 60% => preco R$200."
+    },
+    {
+      "id": "FAQ-002",
+      "categoria": "precificacao",
+      "pergunta": "Devo incluir minha mao de obra no preco?",
+      "resposta": "Sim. Se voce trabalhou 2h e sua hora vale R$25, inclua R$50 no custo."
+    },
+    {
+      "id": "FAQ-003",
+      "categoria": "precificacao",
+      "pergunta": "Como calcular custo por fatia?",
+      "resposta": "Divida o custo total do bolo pelo numero de fatias reais. Custo R$96 e 24 fatias = R$4 por fatia."
+    },
+    {
+      "id": "FAQ-004",
+      "categoria": "precificacao",
+      "pergunta": "Posso usar markup para todos os produtos?",
+      "resposta": "Pode, mas ajuste por categoria. Produtos personalizados costumam precisar markup maior que produtos simples."
+    },
+    {
+      "id": "FAQ-005",
+      "categoria": "precificacao",
+      "pergunta": "Qual margem devo buscar em doces?",
+      "resposta": "Como referencia inicial, 50% a 65% de margem de contribuicao. Valide com seu custo real e mercado local."
+    },
+    {
+      "id": "FAQ-006",
+      "categoria": "precificacao",
+      "pergunta": "Como incluir taxa da maquininha no preco?",
+      "resposta": "Some a taxa no custo variavel. Se taxa e 4% em R$100, custo adicional e R$4."
+    },
+    {
+      "id": "FAQ-007",
+      "categoria": "precificacao",
+      "pergunta": "Devo cobrar valor diferente por canal de venda?",
+      "resposta": "Sim. Canal com taxa maior (app) precisa de preco proprio para manter margem."
+    },
+    {
+      "id": "FAQ-008",
+      "categoria": "precificacao",
+      "pergunta": "Como definir preco minimo?",
+      "resposta": "Preco minimo e o que cobre custo total e margem minima de seguranca. Nunca venda abaixo disso."
+    },
+    {
+      "id": "FAQ-009",
+      "categoria": "precificacao",
+      "pergunta": "Quando reajustar meus precos?",
+      "resposta": "Revise custos ao menos 1 vez por mes. Reajuste quando insumos-chave subirem e comprimirem margem."
+    },
+    {
+      "id": "FAQ-010",
+      "categoria": "precificacao",
+      "pergunta": "Como cobrar frete?",
+      "resposta": "Crie tabela por distancia. Exemplo: ate 5 km R$15, 5-10 km R$25."
+    },
+    {
+      "id": "FAQ-011",
+      "categoria": "precificacao",
+      "pergunta": "Desconto sempre reduz lucro?",
+      "resposta": "Quase sempre, se nao houver ganho de volume planejado. Simule antes de oferecer desconto."
+    },
+    {
+      "id": "FAQ-012",
+      "categoria": "precificacao",
+      "pergunta": "Como saber se meu preco esta baixo?",
+      "resposta": "Se voce vende bem e ainda falta dinheiro no fim do mes, o preco pode estar abaixo do necessario."
+    },
+    {
+      "id": "FAQ-013",
+      "categoria": "compras",
+      "pergunta": "Como montar lista de compras semanal?",
+      "resposta": "Use pedidos confirmados + estoque atual + 10% de seguranca. Compre por categoria para nao esquecer itens."
+    },
+    {
+      "id": "FAQ-014",
+      "categoria": "compras",
+      "pergunta": "Como comparar fornecedor corretamente?",
+      "resposta": "Compare custo final entregue, prazo, qualidade e constancia. Nao olhe so preco unitario."
+    },
+    {
+      "id": "FAQ-015",
+      "categoria": "compras",
+      "pergunta": "Vale comprar grande volume para ter desconto?",
+      "resposta": "So vale se nao travar seu caixa e se houver giro para consumir antes do vencimento."
+    },
+    {
+      "id": "FAQ-016",
+      "categoria": "compras",
+      "pergunta": "Qual item merece compra antecipada?",
+      "resposta": "Itens de curva A e alto giro, como embalagens e insumos base."
+    },
+    {
+      "id": "FAQ-017",
+      "categoria": "compras",
+      "pergunta": "Como evitar compra por impulso?",
+      "resposta": "Defina dia fixo de compra e use lista fechada por pedido."
+    },
+    {
+      "id": "FAQ-018",
+      "categoria": "compras",
+      "pergunta": "O que negociar com fornecedor alem do preco?",
+      "resposta": "Prazo de pagamento, prazo de entrega e estabilidade de qualidade."
+    },
+    {
+      "id": "FAQ-019",
+      "categoria": "compras",
+      "pergunta": "Com que frequencia atualizar preco de insumos?",
+      "resposta": "Semanal para itens criticos e quinzenal para os demais."
+    },
+    {
+      "id": "FAQ-020",
+      "categoria": "compras",
+      "pergunta": "Como comprar para datas sazonais sem risco alto?",
+      "resposta": "Compre em lotes: parte inicial, reposicao intermediaria e lote final conforme demanda real."
+    },
+    {
+      "id": "FAQ-021",
+      "categoria": "producao",
+      "pergunta": "Como montar cronograma de producao diario?",
+      "resposta": "Quebre em blocos: preparo, montagem, finalizacao, embalagem e entrega. Priorize por horario de entrega."
+    },
+    {
+      "id": "FAQ-022",
+      "categoria": "producao",
+      "pergunta": "Como evitar atraso na producao?",
+      "resposta": "Planeje com folga de 10% a 15% do tempo e confirme materiais no dia anterior."
+    },
+    {
+      "id": "FAQ-023",
+      "categoria": "producao",
+      "pergunta": "Posso produzir em lote?",
+      "resposta": "Sim, principalmente bases e recheios com boa validade. Isso reduz tempo e variacao."
+    },
+    {
+      "id": "FAQ-024",
+      "categoria": "producao",
+      "pergunta": "Como padronizar qualidade dos produtos?",
+      "resposta": "Use ficha tecnica com gramagem, tempo, temperatura e rendimento esperado."
+    },
+    {
+      "id": "FAQ-025",
+      "categoria": "producao",
+      "pergunta": "Como descobrir minha capacidade diaria?",
+      "resposta": "Divida horas produtivas pelo tempo medio por produto e aplique folga operacional."
+    },
+    {
+      "id": "FAQ-026",
+      "categoria": "producao",
+      "pergunta": "O que e mise en place na confeitaria?",
+      "resposta": "E separar e organizar tudo antes de produzir: ingredientes, utensilios e embalagens."
+    },
+    {
+      "id": "FAQ-027",
+      "categoria": "producao",
+      "pergunta": "Como reduzir retrabalho na decoracao?",
+      "resposta": "Use checklist final e foto de conferencia antes de embalar."
+    },
+    {
+      "id": "FAQ-028",
+      "categoria": "producao",
+      "pergunta": "Como organizar producao semanal?",
+      "resposta": "Consolide pedidos no domingo, compre na segunda e distribua producao por complexidade."
+    },
+    {
+      "id": "FAQ-029",
+      "categoria": "producao",
+      "pergunta": "Qual o risco de aceitar pedido acima da capacidade?",
+      "resposta": "Aumenta atraso, queda de qualidade e reclamacao. Cresca com limite controlado."
+    },
+    {
+      "id": "FAQ-030",
+      "categoria": "producao",
+      "pergunta": "Como preparar equipe para pico de demanda?",
+      "resposta": "Antecipe pre-preparo, padronize tarefas e defina responsavel por etapa."
+    },
+    {
+      "id": "FAQ-031",
+      "categoria": "estoque",
+      "pergunta": "Como evitar insumo vencido?",
+      "resposta": "Use FEFO, etiqueta de abertura e revisao fixa 2 vezes por semana."
+    },
+    {
+      "id": "FAQ-032",
+      "categoria": "estoque",
+      "pergunta": "Como calcular ponto de reposicao?",
+      "resposta": "Consumo diario x prazo de entrega + estoque de seguranca."
+    },
+    {
+      "id": "FAQ-033",
+      "categoria": "estoque",
+      "pergunta": "O que e curva ABC no estoque?",
+      "resposta": "Classificacao por impacto financeiro: A (mais relevante), B (medio), C (baixo)."
+    },
+    {
+      "id": "FAQ-034",
+      "categoria": "estoque",
+      "pergunta": "Com que frequencia fazer inventario?",
+      "resposta": "Itens A semanal, B quinzenal e C mensal."
+    },
+    {
+      "id": "FAQ-035",
+      "categoria": "estoque",
+      "pergunta": "Como medir desperdicio?",
+      "resposta": "Desperdicio (%) = valor perdido / valor comprado x 100."
+    },
+    {
+      "id": "FAQ-036",
+      "categoria": "estoque",
+      "pergunta": "Onde registrar perdas de producao?",
+      "resposta": "Em planilha ou sistema com data, item, motivo e valor estimado."
+    },
+    {
+      "id": "FAQ-037",
+      "categoria": "estoque",
+      "pergunta": "Como organizar estoque fisico?",
+      "resposta": "Setorize por tipo de item e mantenha endereco fixo com etiqueta."
+    },
+    {
+      "id": "FAQ-038",
+      "categoria": "estoque",
+      "pergunta": "Vale manter estoque alto de perecivel?",
+      "resposta": "Nao. Para perecivel, priorize giro rapido e compra frequente."
+    },
+    {
+      "id": "FAQ-039",
+      "categoria": "pedidos",
+      "pergunta": "Qual informacao minima para fechar pedido?",
+      "resposta": "Data, horario, produto, quantidade/tamanho, endereco, valor e pagamento."
+    },
+    {
+      "id": "FAQ-040",
+      "categoria": "pedidos",
+      "pergunta": "Quando considerar pedido confirmado?",
+      "resposta": "Quando dados estiverem completos e sinal recebido."
+    },
+    {
+      "id": "FAQ-041",
+      "categoria": "pedidos",
+      "pergunta": "Quanto cobrar de sinal?",
+      "resposta": "Geralmente 30% a 50%, conforme risco e personalizacao."
+    },
+    {
+      "id": "FAQ-042",
+      "categoria": "pedidos",
+      "pergunta": "Como evitar erro de personalizacao?",
+      "resposta": "Envie resumo final com tudo escrito e confirme com cliente antes da producao."
+    },
+    {
+      "id": "FAQ-043",
+      "categoria": "pedidos",
+      "pergunta": "Como tratar alteracao de ultima hora?",
+      "resposta": "Aplicar politica de prazo e taxa de alteracao conforme impacto."
+    },
+    {
+      "id": "FAQ-044",
+      "categoria": "pedidos",
+      "pergunta": "Como organizar status dos pedidos?",
+      "resposta": "Use status padrao: novo, confirmado, em producao, pronto, entregue."
+    },
+    {
+      "id": "FAQ-045",
+      "categoria": "pedidos",
+      "pergunta": "Como distribuir horarios de entrega?",
+      "resposta": "Use janelas de 30 a 60 minutos e limite pedidos por janela."
+    },
+    {
+      "id": "FAQ-046",
+      "categoria": "pedidos",
+      "pergunta": "Como confirmar entrega no dia anterior?",
+      "resposta": "Envie mensagem com horario, local, produto e valor pendente."
+    },
+    {
+      "id": "FAQ-047",
+      "categoria": "pedidos",
+      "pergunta": "Posso recusar pedido?",
+      "resposta": "Sim, quando nao houver capacidade ou risco de comprometer qualidade e prazo."
+    },
+    {
+      "id": "FAQ-048",
+      "categoria": "pedidos",
+      "pergunta": "Como fazer pos-venda simples?",
+      "resposta": "Ate 24h apos entrega, pergunte se chegou bem e solicite feedback curto."
+    },
+    {
+      "id": "FAQ-049",
+      "categoria": "atendimento",
+      "pergunta": "Como responder cliente mais rapido?",
+      "resposta": "Use mensagem inicial padrao e colete os dados essenciais logo no primeiro contato."
+    },
+    {
+      "id": "FAQ-050",
+      "categoria": "atendimento",
+      "pergunta": "Como lidar com cliente que some?",
+      "resposta": "Faça 1 follow-up em 24h e outro em 72h. Depois encerre com educacao."
+    },
+    {
+      "id": "FAQ-051",
+      "categoria": "atendimento",
+      "pergunta": "Cliente pediu desconto, o que fazer?",
+      "resposta": "Ofereca alternativa de escopo menor em vez de baixar preco sem criterio."
+    },
+    {
+      "id": "FAQ-052",
+      "categoria": "atendimento",
+      "pergunta": "Como responder reclamacao sem conflito?",
+      "resposta": "Escute, valide fatos e proponha solucao com prazo definido."
+    },
+    {
+      "id": "FAQ-053",
+      "categoria": "atendimento",
+      "pergunta": "Vale usar script de atendimento?",
+      "resposta": "Sim, para acelerar resposta e manter padrao. Personalize no final."
+    },
+    {
+      "id": "FAQ-054",
+      "categoria": "atendimento",
+      "pergunta": "Como nao esquecer informacao do cliente?",
+      "resposta": "Registre tudo em ficha de pedido ou CRM simples no mesmo momento."
+    },
+    {
+      "id": "FAQ-055",
+      "categoria": "atendimento",
+      "pergunta": "Qual prazo para primeira resposta?",
+      "resposta": "Meta recomendada: ate 1 hora no horario comercial."
+    },
+    {
+      "id": "FAQ-056",
+      "categoria": "atendimento",
+      "pergunta": "Como fechar conversa sem perder venda?",
+      "resposta": "Finalize com CTA objetivo: confirmar data e enviar sinal para reserva."
+    },
+    {
+      "id": "FAQ-057",
+      "categoria": "vendas",
+      "pergunta": "Como aumentar ticket medio rapido?",
+      "resposta": "Ofereca adicionais com boa margem no fechamento: topper, vela, embalagem premium."
+    },
+    {
+      "id": "FAQ-058",
+      "categoria": "vendas",
+      "pergunta": "Como montar combos que vendem?",
+      "resposta": "Junte itens complementares com valor percebido alto e margem positiva no total."
+    },
+    {
+      "id": "FAQ-059",
+      "categoria": "vendas",
+      "pergunta": "Como melhorar conversao de orcamento?",
+      "resposta": "Proposta clara + follow-up em 24h + condicoes simples de pagamento."
+    },
+    {
+      "id": "FAQ-060",
+      "categoria": "vendas",
+      "pergunta": "Vale criar menu com 3 opcoes de preco?",
+      "resposta": "Sim. Basico, recomendado e premium ajudam cliente a comparar sem focar so no menor valor."
+    },
+    {
+      "id": "FAQ-061",
+      "categoria": "vendas",
+      "pergunta": "Devo ter pedido minimo?",
+      "resposta": "Sim, quando pedidos pequenos nao cobrem custo de atendimento e producao."
+    },
+    {
+      "id": "FAQ-062",
+      "categoria": "vendas",
+      "pergunta": "Como reativar cliente antigo?",
+      "resposta": "Envie oferta com prazo curto e mensagem personalizada com base em compra anterior."
+    },
+    {
+      "id": "FAQ-063",
+      "categoria": "vendas",
+      "pergunta": "Como definir meta semanal de pedidos?",
+      "resposta": "Meta semanal = meta de faturamento da semana / ticket medio esperado."
+    },
+    {
+      "id": "FAQ-064",
+      "categoria": "vendas",
+      "pergunta": "Como vender mais sem baixar preco?",
+      "resposta": "Aumente valor percebido: pontualidade, acabamento, personalizacao e experiencia de compra."
+    },
+    {
+      "id": "FAQ-065",
+      "categoria": "marketing_basico",
+      "pergunta": "O que postar quando nao tenho ideia?",
+      "resposta": "Use trilha simples: bastidor, prova social e oferta da semana."
+    },
+    {
+      "id": "FAQ-066",
+      "categoria": "marketing_basico",
+      "pergunta": "Quantas vezes postar por semana?",
+      "resposta": "Comece com 3 posts consistentes por semana e stories diarios curtos."
+    },
+    {
+      "id": "FAQ-067",
+      "categoria": "marketing_basico",
+      "pergunta": "Como transformar post em venda?",
+      "resposta": "Sempre inclua CTA: 'chame no WhatsApp para reservar data'."
+    },
+    {
+      "id": "FAQ-068",
+      "categoria": "marketing_basico",
+      "pergunta": "Depoimento de cliente ajuda mesmo?",
+      "resposta": "Sim. Prova social reduz inseguranca e acelera decisao de compra."
+    },
+    {
+      "id": "FAQ-069",
+      "categoria": "marketing_basico",
+      "pergunta": "Como fazer campanha local?",
+      "resposta": "Use geolocalizacao, parceria com negocios do bairro e oferta para retirada local."
+    },
+    {
+      "id": "FAQ-070",
+      "categoria": "marketing_basico",
+      "pergunta": "Que metricas olhar no basico?",
+      "resposta": "Mensagens recebidas, orcamentos enviados e pedidos fechados."
+    },
+    {
+      "id": "FAQ-071",
+      "categoria": "marketing_basico",
+      "pergunta": "Promocao curta funciona melhor?",
+      "resposta": "Sim, promocao com prazo claro cria urgencia e facilita decisao."
+    },
+    {
+      "id": "FAQ-072",
+      "categoria": "financas_basicas",
+      "pergunta": "Qual diferenca entre faturamento e lucro?",
+      "resposta": "Faturamento e tudo que entra. Lucro e o que sobra apos custos e despesas."
+    },
+    {
+      "id": "FAQ-073",
+      "categoria": "financas_basicas",
+      "pergunta": "Como montar fluxo de caixa simples?",
+      "resposta": "Liste entradas e saidas por data e projete 4 semanas a frente."
+    },
+    {
+      "id": "FAQ-074",
+      "categoria": "financas_basicas",
+      "pergunta": "Como calcular ponto de equilibrio?",
+      "resposta": "Custos fixos / margem de contribuicao media. Ex.: R$4.000 / 0,45 = R$8.889."
+    },
+    {
+      "id": "FAQ-075",
+      "categoria": "financas_basicas",
+      "pergunta": "Quanto devo guardar de reserva?",
+      "resposta": "Comece com meta de 1 a 3 meses de custo fixo do negocio."
+    },
+    {
+      "id": "FAQ-076",
+      "categoria": "financas_basicas",
+      "pergunta": "Como definir pro-labore?",
+      "resposta": "Escolha valor mensal fixo compativel com caixa e pague como retirada planejada."
+    },
+    {
+      "id": "FAQ-077",
+      "categoria": "financas_basicas",
+      "pergunta": "Devo separar conta pessoal e conta da confeitaria?",
+      "resposta": "Sim, essa separacao e obrigatoria para enxergar resultado real do negocio."
+    },
+    {
+      "id": "FAQ-078",
+      "categoria": "financas_basicas",
+      "pergunta": "Como acompanhar contas a receber?",
+      "resposta": "Use lista com data, cliente, valor, status e alerta de vencimento."
+    },
+    {
+      "id": "FAQ-079",
+      "categoria": "financas_basicas",
+      "pergunta": "Qual indicador financeiro mais importante no inicio?",
+      "resposta": "Margem liquida mensal, porque mostra se seu faturamento vira lucro de verdade."
+    },
+    {
+      "id": "FAQ-080",
+      "categoria": "financas_basicas",
+      "pergunta": "Quando procurar contador, nutricionista ou advogado?",
+      "resposta": "Sempre que envolver imposto, rotulagem/informacao nutricional ou contrato/cobranca juridica."
+    }
+  ]
+}

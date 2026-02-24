@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+google-generativeai
+python-dotenv
+pydantic
+pypdf
+pytest
+httpx
+groq
+supabase

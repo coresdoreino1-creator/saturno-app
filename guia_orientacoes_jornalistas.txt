@@ -1,0 +1,61 @@
+Guia rapido de orientacoes para jornalistas brasileiros
+=======================================================
+
+1. Briefing antes da pauta
+- Defina objetivo central, perguntas-chave e hipoteses que precisam ser confirmadas ou refutadas.
+- Levante rapidamente o que ja foi publicado sobre o tema, evitando retrabalho e identificando lacunas.
+- Identifique pelo menos duas fontes independentes para cada afirmacao relevante.
+- Compartilhe com o editor um plano de deslocamento, contatos e horarios previstos, registrando tudo no gestor de pautas.
+
+2. Checklist de verificacao inicial
+- Compare informacoes com documentos oficiais, bancos de dados publicos e registros empresariais.
+- Sempre confirme nomes completos, cargos e ligacoes institucionais das fontes.
+- Em pautas com dados, mantenha planilhas com formulas auditaveis e indique origem (portal da transparencia, IBGE, TSE, etc.).
+- Verifique fotos e videos com busca reversa, checagem de metadados e cruzamento de localizacao.
+
+3. Ferramentas uteis
+- Buscadores com filtros (site:, filetype:) para localizar documentos especificos.
+- Planilhas colaborativas, software de referencia (Obsidian, Notion, Airtable) e sistemas de tickets internos.
+- Aplicativos de seguranca e comunicacao cifrada (Signal, Session, Element) para contato com fontes sensiveis.
+- Monitoramento de redes via listas e dashboards personalizados (TweetDeck alternativos, Feedly, Inoreader).
+
+4. Seguranca digital basica
+- Ative MFA em email, sistemas de redacao e redes sociais; prefira chaves fisicas ou aplicativos OTP.
+- Atualize navegadores e use extensoes que bloqueiem scripts suspeitos; evite logins em redes publicas sem VPN.
+- Limpe metadados de fotos e PDFs antes de publicar; revise documentos para remover dados pessoais de terceiros.
+- Mantenha inventario de dispositivos, senhas de administradores e niveis de acesso por usuario.
+
+5. Seguranca em campo e coberturas de risco
+- Informe rota, contatos locais e horarios de check-in; combine palavra-chave de emergencia com a base.
+- Use EPIs adequados (capacete leve, mascara, colete identificando "IMPRENSA") e carregue kit de primeiros socorros.
+- Evite deslocamentos sozinho em areas isoladas; negocie apoio de fixers credenciados quando necessario.
+- Tenha plano de saída e transporte conhecido; memorize pontos de apoio (hospitais, delegacias, sindicatos).
+
+6. Protecao de fontes e conformidade legal
+- Revisite o Codigo de Etica da FENAJ e defina com a fonte limites de off, background e on the record.
+- Guarde contatos sensiveis em canais cifrados; utilize armazenamento separado com criptografia para documentos.
+- Ao lidar com dados pessoais, avalie base legal segundo a LGPD e documente justificativas editoriais.
+- Em pautas envolvendo menores ou vitimas vulneraveis, remova identificadores e consulte o departamento juridico.
+
+7. Processo de apuracao e revisao
+- Documente perguntas feitas, respostas recebidas e status (confirmado, pendente, controverso) em planilha compartilhada.
+- Compartilhe trechos sensiveis com o editor para dupla checagem antes de publicar.
+- Inclua contexto numerico (metodologia, margem de erro, limitacoes) e disclaimers quando necessario.
+- Em entrevistas remotas, registre consentimento para gravacao e informe criterios de edicao.
+
+8. Pos-publicacao e transparencia
+- Deixe preparado um plano de monitoramento para feedback, retificacoes e ataques coordenados.
+- Responda pedidos de correcao com calma, informando o processo interno e atualizando o texto quando pertinente.
+- Arquive materiais de apuracao e versoes do texto final com hash ou registro em nuvem corporativa.
+- Atualize a equipe sobre riscos decorrentes da materia (assedio digital, solicitacao judicial, direito de resposta).
+
+9. Agenda de contatos essenciais
+- Editor responsavel e chefe de redacao.
+- Advogado ou consultoria juridica do veiculo.
+- Sindicatos locais, associações de imprensa, comites de protecao a jornalistas.
+- Linhas de emergencia e celulares institucionais para alertas rapidos.
+
+Mensagens-chave para o chatbot
+- Responder de forma direta, com passos acionaveis para quem esta no meio da apuracao.
+- Indicar quando buscar respaldo do editor, assessoria juridica ou protocolos formais de seguranca.
+- Reforcar a importancia do registro organizado, da checagem dupla e da protecao de fontes.
