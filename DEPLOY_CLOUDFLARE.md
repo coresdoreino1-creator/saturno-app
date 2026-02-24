@@ -1,6 +1,7 @@
 # Deploy no Cloudflare Workers
 
 Guia rapido para publicar o backend Saturno no Cloudflare Workers usando Groq.
+Worker unico padrao deste projeto: `saturno-app`.
 
 ## 1. Pre-requisitos
 - Node.js 18+
@@ -24,25 +25,27 @@ npx wrangler login
 
 ## 4. Definir secrets obrigatorias
 ```bash
-npx wrangler secret put GROQ_API_KEY
-npx wrangler secret put ACOLHEIA_API_KEY
+npx wrangler secret put GROQ_API_KEY --name saturno-app
+npx wrangler secret put ACOLHEIA_API_KEY --name saturno-app
 ```
 
 Secrets opcionais:
 ```bash
-npx wrangler secret put SUPABASE_SERVICE_KEY
-npx wrangler secret put SERPER_API_KEY
+npx wrangler secret put SUPABASE_SERVICE_KEY --name saturno-app
+npx wrangler secret put SERPER_API_KEY --name saturno-app
 ```
 
 ## 5. Variaveis de ambiente
 As variaveis nao sensiveis ja estao no `wrangler.toml`:
 - `CONTEXT_IDENTIFIER=assistente_confeitaria`
-- `REQUIRE_API_KEY=1`
+- `REQUIRE_API_KEY=0` (modo teste)
 - `MAX_MESSAGE_CHARS=2000`
 - `GROQ_MODEL=llama-3.3-70b-versatile`
-- `CORS_ALLOW_ORIGIN=https://saturnogestao.vercel.app`
+- `CORS_ALLOW_ORIGIN=*` (modo teste)
 
-Ajuste o `CORS_ALLOW_ORIGIN` para o dominio real do seu frontend.
+Para producao:
+- `REQUIRE_API_KEY=1`
+- `CORS_ALLOW_ORIGIN=https://SEU_FRONTEND`
 
 ## 6. Configurar Supabase (se usar rotas protegidas)
 No `wrangler.toml`, configure:
@@ -57,14 +60,13 @@ npx wrangler deploy
 
 ## 8. Teste rapido
 ```bash
-curl -X GET "https://SEU_WORKER.workers.dev/health"
+curl -X GET "https://saturno-app.coresdoreino1.workers.dev/health"
 ```
 
 Exemplo de teste da rota `/mensagem`:
 ```bash
-curl -X POST "https://SEU_WORKER.workers.dev/mensagem" \
+curl -X POST "https://saturno-app.coresdoreino1.workers.dev/mensagem" \
   -H "Content-Type: application/json" \
-  -H "x-saturno-key: SUA_ACOLHEIA_API_KEY" \
   -d '{"mensagem":"Me ajuda a precificar um bolo de 2kg","buscar_web":false}'
 ```
 
