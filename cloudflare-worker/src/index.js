@@ -295,7 +295,6 @@ Regras:
 - Linguagem simples, direta e acionavel.
 - Em temas de preco/custo/lucro, mostrar formula e exemplo numerico.
 - Nao inventar dados e nao prometer lucro.
-- Orientar sem substituir contador, nutricionista ou advogado.
 - Responder completo na primeira mensagem, sem pedir confirmacao.
 
 Informacoes recentes:
@@ -308,8 +307,7 @@ Pedido do usuario: "${mensagem}"
 
 Formato preferencial:
 ## Entrega
-## Proximos passos
-## Riscos e cuidados`;
+## Proximos passos`;
 }
 
 async function chamarGroq(prompt, env) {
