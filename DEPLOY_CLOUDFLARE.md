@@ -12,6 +12,11 @@ Guia rapido para publicar o backend Saturno no Cloudflare Workers usando Groq.
 cd cloudflare-worker
 ```
 
+Se o deploy rodar pela raiz do repositório (CI/CD), use `--config`:
+```bash
+npx wrangler deploy --config cloudflare-worker/wrangler.toml
+```
+
 ## 3. Login no Cloudflare
 ```bash
 npx wrangler login
